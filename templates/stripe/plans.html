@@ -1,0 +1,52 @@
+{use_macro file="Dataface_Main_Template.html"}
+
+  {fill_slot name="custom_stylesheets"}
+
+    <!--<link rel="stylesheet" href="modules/stripe/css/stripe/normalize.css" />-->
+    <link rel="stylesheet" href="modules/stripe/css/stripe/global.css?v={$ENV.APPLICATION_VERSION}" />
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!--<script src="modules/stripe/js/stripe/script.js?v={$ENV.APPLICATION_VERSION}" defer></script>-->
+  {/fill_slot}
+
+  {fill_slot name="main_section"}
+  
+      
+      <div class="sr-main" style="display: flex;">
+        
+        
+        
+        
+        <div class="sr-container">
+            {foreach item=product from=$products}
+          <section class="container basic-photo" data-stripe-product-id="{$product.id|escape}">
+              <div class="ribbon ribbon-top-left"><span>Subscribed</span></div>
+            <div>
+              <h1>{$product.name|escape}</h1>
+              <h4>{$product.description|escape}</h4>
+              {if $product.images and $product.images|@count>0}
+              <div class="pasha-image">
+                <img
+                  src="{$product.images[0]|escape}"
+                  width="140"
+                  height="160"
+                />
+              </div>
+              {/if}
+            </div>
+            {foreach from=$product.prices item=price}
+                <button data-stripe-price-id="{$price.id|escape}" id="{$price.id}-btn">
+                    <span class='price'>{$price.label|escape}</span>
+                    <span class='current-plan'>(Current Plan)</span>
+                </button>
+            {/foreach}
+          </section>
+           {/foreach}
+          
+        </div>
+        <div id="error-message"></div>
+      </div>
+    
+  
+{/fill_slot}
+{/use_macro}

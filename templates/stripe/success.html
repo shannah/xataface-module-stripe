@@ -1,0 +1,31 @@
+{use_macro file="Dataface_Main_Template.html"}
+
+	{fill_slot name="custom_stylesheets"}
+    
+    <link rel="stylesheet" href="modules/stripe/css/stripe/normalize.css" />
+    <link rel="stylesheet" href="modules/stripe/css/stripe/global.css" />
+
+    <script src="modules/stripe/js/stripe/success.js" defer></script>
+	{/fill_slot}
+
+  {fill_slot name="main_section"}
+
+      <div class="sr-main">
+        
+        <div class="sr-payment-summary completed-view">
+            <h1>Your payment succeeded</h1>
+            
+          </div>
+          
+        </div>
+        <div class="sr-content">
+        	{define_slot name="stripe_success_page_content"}
+			
+			<p>You can manage your billing information via the <a href="{$ENV.DATAFACE_SITE_HREF}?-action=stripe_customer_portal">secure customer portal</a></p>
+			{/define_slot}
+		</div>
+      </div>
+
+	{/fill_slot}
+{/use_macro}
+
