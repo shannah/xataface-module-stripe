@@ -76,7 +76,6 @@ The name of your "success" action.  This is an action that will be called when t
 The properties in the "stripe_plans__test" section are all key/value pairs matching a stripe price ID with a label for the price.  The key is the price ID, and the value the label that will be displayed on the button to purchase the "price".  See https://stripe.com/docs/billing/prices-guide[Stripe's Products and Prices] documentation for more information about prices.  
 
 ====
-. Create your "plans" table.  See <<plans-table>> for more details about this step.
 . Implement `stripe_isSandbox()` in your application delegate class to return `true`.
 +
 ====
