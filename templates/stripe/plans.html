@@ -33,6 +33,7 @@
                 />
               </div>
               {/if}
+              {block name="stripe_plan_description" product=$product}
             </div>
             {foreach from=$product.prices item=price}
                 <button data-stripe-price-id="{$price.id|escape}" id="{$price.id}-btn">
