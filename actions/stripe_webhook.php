@@ -49,8 +49,13 @@ class actions_stripe_webhook {
 	            $mod = $mt->loadModule('modules_stripe');
 	            $mod->setStripeKey();
 	            $checkout_session = \Stripe\Checkout\Session::retrieve($object['id']);
-				if ($checkout_session and @$checkout_session['metadata'] and @$checkout_session['metadata']['username']) {
-					$username = $checkout_session['metadata']['username'];
+                $username = null;
+                if ($checkout_session and @$checkout_session['metadata'] and @$checkout_session['metadata']['username']) {
+                    $username = $checkout_session['metadata']['username'];
+                }
+                if ($username) {
+                    // Checkout session had a username assigned to it.  We will connect it to the stripe customer
+					//$username = $checkout_session['metadata']['username'];
 		            $existingCustomer = df_get_record('stripe_customers', ['customer_id' => '='.$customer]);
 		            if (!$existingCustomer) {
 						xf_info("Inserting stripe customer ".$customer." bound to user ".$username, '#stripe_webhook');

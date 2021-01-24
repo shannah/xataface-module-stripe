@@ -26,10 +26,12 @@ class actions_stripe_create_checkout_session {
         $customerId = $mod->getCustomerId();
         $cancelUrl = $domain_url . '?-action=stripe_canceled';
 		$metadata = [];
+
 		if (class_exists('Dataface_AuthenticationTool')) {
 			$auth = Dataface_AuthenticationTool::getInstance();
 			$username = $auth->getLoggedInUsername();
 			$metadata['username'] = $username;
+            
 		}
 		
         $sessionData = [
@@ -45,12 +47,26 @@ class actions_stripe_create_checkout_session {
         ];
         if ($customerId) {
             $sessionData['customer'] = $customerId;
-        }
+        } 
 		$sessionData['client_reference_id'] = 'foobarfoo';
 		if (class_exists('Dataface_AuthenticationTool')) {
 			$auth = Dataface_AuthenticationTool::getInstance();
+            $user = $auth->getLoggedInUser();
 			$username = $auth->getLoggedInUsername();
-			$sessionData['client_reference_id'] = $username;
+            if ($username) {
+                $sessionData['client_reference_id'] = $username;
+            }
+			
+            if (!$customerId) {
+                $emailColumn = $auth->getEmailColumn();
+                if ($user and $emailColumn) {
+                    $email = $user->val($emailColumn);
+                    if ($email) {
+                        $sessionData['customer_email'] = $email;
+                    }
+                }
+            }
+            
 		}
         $checkout_session = \Stripe\Checkout\Session::create($sessionData);
 

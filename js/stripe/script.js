@@ -97,7 +97,7 @@
         return result.json();
       })
       .then(function(json) {
-          console.log("json is ", json);
+        //  console.log("json is ", json);
         var publishableKey = json.publishableKey;
         var basicPriceId = json.basicPrice;
         var proPriceId = json.proPrice;
