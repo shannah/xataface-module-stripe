@@ -94,6 +94,9 @@
 	        }
 	        //print_r($this->config);exit;
 		}
+        if (@$app->_conf['stripe__common']) {
+            $this->config = array_merge($this->config, $app->_conf['stripe__common']);
+        }
         
         $this->addPaths();
         xf_script('stripe/stripe_global.js');

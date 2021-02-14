@@ -686,7 +686,7 @@ It may be tempting to use this "success_action" to perform housekeeping duties i
 
 If the user already has a subscription to one of your plans, then the `stripe_plans` action will reflect this.
 
-.The stripe_plans action displayed for a user who is already subscribed to the "Narrated News Basic Plan" on a yearly subscription.  Notice the "Subscribed" ribbon on the "Basic Plan" box indicating that the use is subscribed.  Also notice that "(Current Plan)" is displayed on the button for the yearly plan to reflect the fact that the user is already on this plan.
+.The stripe_plans action displayed for a user who is already subscribed to the "Jabberwocky Basic Plan" on a yearly subscription.  Notice the "Subscribed" ribbon on the "Basic Plan" box indicating that the use is subscribed.  Also notice that "(Current Plan)" is displayed on the button for the yearly plan to reflect the fact that the user is already on this plan.
 image::images/Image-311220-082837.373.png[]
 
 If the user presses on any of these options, they will be asked to confirm that they want to change their plan, and if they say "yes", then their plan will be automatically changed.

@@ -32,7 +32,18 @@ class actions_stripe_plans {
             
             $products = $mod->getPlans();
             xf_script('stripe/script.js');
+            
+            $app = Dataface_Application::getInstance();
+            
+            
             if (count($products) > 0) {
+                $conf = $mod->getConfig();
+                $title = 'Select Plan';
+                if (@$conf['actions.stripe_plans.title']) {
+                    $title = $conf['actions.stripe_plans.title'];
+                }
+                $title = df_translate('modules.stripe.actions.stripe_plans.title', $title);
+                $app->setPageTitle($title);
                 df_display(['products' => $products], 'stripe/plans.html');
             } else {
                  df_display([], 'stripe/no-plans.html');
