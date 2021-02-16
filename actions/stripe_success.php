@@ -38,8 +38,9 @@ class actions_stripe_success {
 		
 		$config = xf_stripe()->getConfig();
 		if (@$config['success_action']) {
+            $app = Dataface_Application::getInstance();
 			$redirectUrl = DATAFACE_SITE_HREF . '?-action=' . urlencode($config['success_action']);
-			header('Location: '.$redirectUrl);
+			$app->redirect($redirectUrl);
 			exit;
 		}
         Dataface_ModuleTool::getInstance()->loadModule('modules_stripe')->addPaths();

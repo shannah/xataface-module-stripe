@@ -58,7 +58,7 @@ class actions_stripe_customer_portal {
             return;
         }
         //print_r($session);exit;
-        header('Location: '.$session->url);
+        $app->redirect($session->url);
         exit;
         
     }

@@ -1,62 +1,4 @@
-/* Variables */
-:root {
-  --gray-offset: rgba(0, 0, 0, 0.03);
-  --gray-border: var(--highlightColor);
-  --gray-light: var(--secondaryTextColor);
-  --gray-mid: var(--mainTextColor);
-  --gray-dark: var(--mainTextColor);
-  --body-color: var(--mainTextColor);
-  --headline-color: var(--mainTextColor);
-  --accent-color: var(--highlightColor);
-  --body-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  --radius: 6px;
-  --logo-image: url("https://storage.googleapis.com/stripe-sample-images/KAVHOLM.svg");
-  --form-width: 600px;
-}
 
-/* Base */
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: var(--body-font-family);
-  font-size: 16px;
-  color: var(--body-color);
-  -webkit-font-smoothing: antialiased;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--body-color);
-  margin-top: 2px;
-  margin-bottom: 4px;
-}
-h1 {
-  font-size: 27px;
-  color: var(--headline-color);
-}
-h4 {
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--gray-light);
-}
-
-/* Layout */
-.sr-root {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 980px;
-  padding: 48px;
-  align-content: center;
-  justify-content: center;
-  height: auto;
-  min-height: 100vh;
-  margin: 0 auto;
-}
 .sr-header {
   margin-bottom: 32px;
 }
@@ -103,18 +45,11 @@ h4 {
 .sr-form-row {
   margin: 16px 0;
 }
-label {
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 8px;
-  display: inline-block;
-}
+
 
 /* Inputs */
 .sr-input,
-.sr-select,
-input[type="text"],
-input[type="number"] {
+.sr-select {
   border: 1px solid var(--gray-border);
   border-radius: var(--radius);
   padding: 5px 12px;
@@ -128,17 +63,13 @@ input[type="number"] {
   color: #32325d;
 }
 .sr-input:focus,
-input[type="text"]:focus,
-button:focus,
 .focused {
   box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
     0 0 0 4px rgba(50, 151, 211, 0.3);
   outline: none;
   z-index: 9;
 }
-.sr-input::placeholder,
-input[type="text"]::placeholder,
-input[type="number"]::placeholder {
+.sr-input::placeholder{
   color: var(--gray-light);
 }
 
@@ -276,35 +207,11 @@ input[type="number"]::placeholder {
   transition: all 0.2s ease;
   display: block;
 }
-button:hover {
-  filter: contrast(115%);
-}
-button:active {
-  transform: translateY(0px) scale(0.98);
-  filter: brightness(0.9);
-}
-button:disabled {
-  opacity: 0.5;
-  cursor: none;
-}
+
 
 .sr-payment-form button,
 .fullwidth {
   width: 100%;
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-a:hover {
-  filter: brightness(0.8);
-}
-
-a:active {
-  filter: brightness(0.5);
 }
 
 /* Code block */
@@ -314,11 +221,6 @@ a:active {
   border-radius: var(--radius);
   max-height: 200px;
   overflow: auto;
-}
-code,
-pre {
-  font-family: "SF Mono", "IBM Plex Mono", "Menlo", monospace;
-  font-size: 12px;
 }
 
 /* Stripe Element placeholder */
@@ -516,12 +418,6 @@ pre {
   margin-top: 0;
   border-radius: 0;
   border: 1px solid var(--accent-color);
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 /* Animated form */
